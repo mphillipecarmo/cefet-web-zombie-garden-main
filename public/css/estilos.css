@@ -1,0 +1,163 @@
+@import url(fontes.css);
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+
+  --cor-fundo: #383b3f;
+  --cor-texto: #fff;
+  --cor-bordas: #666;
+  --cor-logo-1: #d79657;
+  --cor-logo-2: #33f73c;
+}
+
+.logo {
+  font-family: 'Lakki Reddy', cursive;
+}
+
+.logo > .primary-logo-color {
+  color: var(--cor-logo-1);
+}
+
+.logo > .secondary-logo-color {
+  color: var(--cor-logo-2);
+}
+
+.navbar-brand {
+  font-size: 34px;
+}
+
+main {
+  flex: 1;
+  padding: 1.5em 0;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  border-radius: 10px 10px 0 0;
+}
+
+fieldset {
+  border: 1px solid var(--cor-bordas);
+  border-radius: 5px;
+  padding: 1em;
+  margin: 2em auto;  
+}
+
+legend {
+  margin-top: -1.5em;
+  padding: 0 0.25em;
+  width: auto;
+  border: 1px solid var(--cor-bordas);
+  font-size: 1.25em;
+  background-color: var(--cor-fundo);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 0.75em;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.zombie-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+  gap: 1em;
+}
+
+.zombie-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  shape-outside: margin-box;
+}
+
+.zombie-name {
+  text-align: center;
+}
+
+.zombie-list.mini {
+  margin-bottom: .75em;
+  gap: 0.5em;
+}
+
+.zombie-list.mini .zombie-image,
+.zombie-image.mini {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.dead {
+  text-decoration: line-through;
+}
+
+.property {
+  font-weight: bold;
+  color: white;
+}
+
+.zombie-details {
+  margin-bottom: 40px;
+}
+
+.form-rows .row {
+  margin-bottom: 1.5em;
+}
+
+#statistics-title {
+  margin: 0;
+}
+
+#statistics-title + hr {
+  margin-top: 4px;
+}
+
+.statistics-count sup.label {
+  font-size: 50%;
+}
+
+#notifications {
+  bottom: 1rem;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.sliding-out {
+  position: relative;
+  animation: vanishing-down .5s ease-out 1.2s;
+  animation-fill-mode: forwards;
+}
+
+.floating,
+.zombie-list a img {
+  animation: floating 200ms ease-in-out 0s infinite alternate paused;
+}
+
+.floating:hover,
+.zombie-list a:hover img {
+  animation-play-state: running;
+}
+
+@keyframes vanishing-down {
+  from { left: 0; opacity: 1; }
+  to   { left: 30px; opacity: 0; }
+}
+
+@keyframes floating {
+  from { transform: scale(1); }
+  to   { transform: scale(1.1); }
+}

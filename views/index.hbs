@@ -1,0 +1,133 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="col">
+      Bem vindo ao
+      <span class="logo">
+        <span class="secondary-logo-color">Jardim</span>
+        <span class="primary-logo-color">Zumbi</span>
+      </span>
+    </h1>
+  </div>
+
+  <div class="row">
+    <div class="col-9">
+      <form class="action-buttons" action="/people/eaten?_method=PUT" method="POST">
+        <fieldset>
+          <legend>Comer cérebros</legend>
+          <p class="form-text">Quando um zumbi come o cérebro de uma pessoa, ela morre (altera status para morta).</p>
+          <div class="container-fluid form-rows">
+            <div class="row">
+              <div class="col-3">
+                <label for="zombie" class="form-label">Quem vai comer? (zumbi)</label>
+              </div>
+              <div class="col-6">
+                <select class="form-select" name="zombie" id="zombie">
+                  {{#each zombies}}
+                    <option value="{{id}}">{{name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <label for="person" class="form-label">Quem? (pessoa)</label>
+              </div>
+              <div class="col-6">
+                <select class="form-select" name="person" id="person">
+                  {{#each people}}
+                    {{#if alive}}
+                      <option value="{{id}}">{{name}}</option>
+                    {{/if}}
+                  {{/each}}
+                </select>
+              </div>
+              <div class="col-3">
+                <button type="submit" class="btn btn-primary">Comer</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <form class="action-buttons" action="/zombies/brains" method="POST">
+        <fieldset>
+          <legend>Dar uma mordiscadinha</legend>
+          <p class="form-text">Quando um zumbi mordisca uma pessoa, ela se torna zumbi.</p>
+          <div class="container-fluid form-rows">
+            <div class="row">
+              <div class="col-3">
+                <label for="zombie" class="form-label">Quem vai mordiscar? (zumbi)</label>
+              </div>
+              <div class="col-6">
+                <select class="form-select" name="zombie" id="zombie">
+                  {{#each zombies}}
+                    <option value="{{id}}">{{name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <label for="person" class="form-label">Quem? (pessoa)</label>
+              </div>
+              <div class="col-6">
+                <select class="form-select" name="person" id="person">
+                  {{#each people}}
+                    {{#if alive}}
+                      <option value="{{id}}">{{name}}</option>
+                    {{/if}}
+                  {{/each}}
+                </select>
+              </div>
+              <div class="col-3">
+                <button type="submit" class="btn btn-primary">Mordidinha</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <!-- seção de estatísticas -->
+    <div class="col-3">
+      <h2 id="statistics-title">Estatísticas</h2>
+      <hr>
+      <h3>
+        Pessoas:
+        <small class="statistics-count">
+          <span class="badge bg-secondary">{{people.length}}</span>
+          {{#if peopleCountChange}}
+            <sup class="badge bg-danger sliding-out">{{peopleCountChange}}</sup>
+          {{/if}}
+        </small>
+      </h3>
+      <ul class="list-inline">
+        {{#each people}}
+          <li class="list-inline-item">
+            <span class="badge rounded-pill bg-{{#if alive}}success{{else}}secondary dead{{/if}}">{{name}}</span>
+          </li>
+        {{/each}}
+      </ul>
+      <p class="text-muted">Pessoas riscadas foram comidas (mortas) por zumbis.</p>
+      
+      <hr>
+      <h3>
+        Zumbis:
+        <small class="statistics-count">
+          <span class="badge bg-secondary">{{zombies.length}}</span>
+          {{#if zombieCountChange}}
+            <sup class="badge bg-info sliding-out">{{zombieCountChange}}</sup>
+          {{/if}}
+        </small>
+      </h3>
+      <ul class="zombie-list mini">
+        {{#each zombies}}
+          <li>
+            <img class="zombie-image" src="/img/{{pictureUrl}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{name}}">
+          </li>
+        {{/each}}
+      </ul>
+      <p class="text-muted">Quando um zumbi mordisca uma pessoa ela é removida da lista de pessoas e se torna um zumbi aqui.</p>
+    </div>
+  </div>
+</div>

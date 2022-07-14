@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Zombie Garden</title>
+    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="icon" href="/img/zombie1.jpg">
+  </head>
+  <body class="bg-dark">
+    {{> header}}
+
+
+    <section id="notifications" class="toast-container position-absolute start-50 translate-middle-x">
+      {{#if success}}
+        {{> notification isSucess=true title="Sucesso!" message=success}}
+      {{/if}}
+      {{#if error}}
+        {{> notification isSucess=false title="Erro!" message=error}}
+      {{/if}}
+    </section>
+
+    <main>
+      {{{body}}}
+    </main>
+
+    <script src="/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="col-12">Detalhes do Zumbi: {{zombie.zombie.name}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <div class="card mb-3 zombie-details bg-dark text-white">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="" src="/img/{{zombie.zombie.pictureUrl}}" alt="Foto de um zumbi">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2 class="card-title">{{zombie.zombie.name}}</h2>
+            <p class="card-text">Este é o zumbi {{zombie.zombie.name}}.</p>
+
+            <dl class="row">
+              <dt class="col-sm-3">Nome anterior</dt>
+              <dd class="col-sm-9">{{zombie.zombie.previousName}}</dd>
+            
+              <dt class="col-sm-3">Nascido em</dt>
+              <dd class="col-sm-9">
+                <time>{{zombie.zombie.born}}</time>
+              </dd>
+              
+              <dt class="col-sm-3">Mordido por</dt>
+              <dd class="col-sm-9">
+                {{#if zombie.zombie.bittenBy}}
+                  {{zombie.biter.name}} <img class="zombie-image mini" src="/img/{{zombie.biter.pictureUrl}}">
+                {{else}}
+                  Não se sabe...
+                {{/if}}
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

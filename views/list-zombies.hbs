@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="col-12">Zumbis que moram no Jardim</h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <p>Há {{zombies.length}} zumbi(s) registrado(s) no jardim</p>
+      {{#if zombies}}
+        <ul class="zombie-list">
+          {{#each zombies}}
+            <li>
+              <a href="/zombies/{{id}}">
+                <img class="zombie-image" src="img/{{pictureUrl}}">
+              </a>
+              <div class="zombie-name">{{name}}</div>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
+  </div>
+</div>
